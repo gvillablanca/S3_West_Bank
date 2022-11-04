@@ -116,13 +116,36 @@ public class WestBank {
     }    
     
     public static String verDatos(List<Cliente> clienteBanco){
-        System.out.println("opcion 2");
-        menu(clienteBanco);
-        return "2";
+            System.out.println("opcion 2");
+            menu(clienteBanco);
+            return "2";
     }
     
     public static String deposito(List<Cliente> clienteBanco){
-        System.out.println("opcion 3");
+            String rut = new String();
+            System.out.println("RUT: ");
+            Scanner rutIn = new Scanner(System.in);
+            rut = rutIn.nextLine();
+        
+            String monto = new String();
+            System.out.println("MONTO: ");
+            Scanner saldoIn = new Scanner(System.in);
+            monto = saldoIn.nextLine();
+            
+                for(int i = 0;i<=clienteBanco.size();i++){
+                    if(!clienteBanco.get(i).getRut().equals(rut)){
+                        System.out.println("Cliente no se registra en sistema");
+                        break;
+ }
+                else{
+                        Cuenta nCuenta = new Cuenta();
+                        int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
+                        nCuenta.setSaldo(nsaldo);
+                        clienteBanco.get(i).setCuenta(nCuenta);
+                        System.out.println("NUEVO SALDO: " + nsaldo);
+                        break;
+                }
+            }        
         menu(clienteBanco);
         return "3";
     }
