@@ -64,32 +64,8 @@ public class WestBank {
             Scanner rutIn = new Scanner(System.in);
             rut = rutIn.nextLine();
             
-            System.out.println("NOMBRE: ");
-            Scanner nombreIn = new Scanner(System.in);
-            nombre = nombreIn.nextLine();
-            
-            System.out.println("APELLIDO PATERNO: ");
-            Scanner apellidoPatIn = new Scanner(System.in);
-            apellidoPaterno = apellidoPatIn.nextLine();
-            
-            System.out.println("APELLIDO MATERNO: ");
-            Scanner apellidoMatIn = new Scanner(System.in);
-            apellidoMaterno = apellidoMatIn.nextLine();
-            
-            System.out.println("DOMICILIO: ");
-            Scanner domicilioIn = new Scanner(System.in);
-            domicilio = domicilioIn.nextLine();
-            
-            System.out.println("COMUNA: ");
-            Scanner comunaIn = new Scanner(System.in);
-            comuna = comunaIn.nextLine();
-            
-            System.out.println("TELEFONO: ");
-            Scanner telefonoIn = new Scanner(System.in);
-            telefono = telefonoIn.nextLine();
-            
-            if(rut.isEmpty() || nombre.isEmpty() || apellidoPaterno.isEmpty() || apellidoMaterno.isEmpty() || domicilio.isEmpty() || comuna.isEmpty() || telefono.isEmpty()){
-                System.out.println("FAVOR INGRESAR TODOS LOS DATOS....\n");
+            if(rut.isEmpty()){
+                System.out.println("FAVOR INGRESAR RUT....\n");
             }
             else{
                 for(int i = 0;i<=clienteBanco.size();i++){
@@ -98,8 +74,35 @@ public class WestBank {
                             System.out.println("CLIENTE YA SE REGISTRA EN SISTEMA....\n");                            
                             break;
                         }
-                        else{
-                            numeroCuenta = rut;                
+                        else{                                        
+                            System.out.println("NOMBRE: ");
+                            Scanner nombreIn = new Scanner(System.in);
+                            nombre = nombreIn.nextLine();
+
+                            System.out.println("APELLIDO PATERNO: ");
+                            Scanner apellidoPatIn = new Scanner(System.in);
+                            apellidoPaterno = apellidoPatIn.nextLine();
+
+                            System.out.println("APELLIDO MATERNO: ");
+                            Scanner apellidoMatIn = new Scanner(System.in);
+                            apellidoMaterno = apellidoMatIn.nextLine();
+
+                            System.out.println("DOMICILIO: ");
+                            Scanner domicilioIn = new Scanner(System.in);
+                            domicilio = domicilioIn.nextLine();
+
+                            System.out.println("COMUNA: ");
+                            Scanner comunaIn = new Scanner(System.in);
+                            comuna = comunaIn.nextLine();
+
+                            System.out.println("TELEFONO: ");
+                            Scanner telefonoIn = new Scanner(System.in);
+                            telefono = telefonoIn.nextLine();
+                            
+                            System.out.println("INGRESE NUMERO DE CUENTA: ");
+                            Scanner numeroCuentaIn = new Scanner(System.in);
+                            numeroCuenta = numeroCuentaIn.nextLine(); 
+                            
                             cliente.setRut(rut);
                             cliente.setNombre(nombre);
                             cliente.setApellidoPaterno(apellidoPaterno);
@@ -115,10 +118,35 @@ public class WestBank {
                             break;
                          }                     
                     }
-                    else{
+                    else{                                    
+                        System.out.println("NOMBRE: ");
+                        Scanner nombreIn = new Scanner(System.in);
+                        nombre = nombreIn.nextLine();
+
+                        System.out.println("APELLIDO PATERNO: ");
+                        Scanner apellidoPatIn = new Scanner(System.in);
+                        apellidoPaterno = apellidoPatIn.nextLine();
+
+                        System.out.println("APELLIDO MATERNO: ");
+                        Scanner apellidoMatIn = new Scanner(System.in);
+                        apellidoMaterno = apellidoMatIn.nextLine();
+
+                        System.out.println("DOMICILIO: ");
+                        Scanner domicilioIn = new Scanner(System.in);
+                        domicilio = domicilioIn.nextLine();
+
+                        System.out.println("COMUNA: ");
+                        Scanner comunaIn = new Scanner(System.in);
+                        comuna = comunaIn.nextLine();
+
+                        System.out.println("TELEFONO: ");
+                        Scanner telefonoIn = new Scanner(System.in);
+                        telefono = telefonoIn.nextLine();
+            
                         System.out.println("INGRESE NUMERO DE CUENTA: ");
                         Scanner numeroCuentaIn = new Scanner(System.in);
-                        numeroCuenta = numeroCuentaIn.nextLine();           
+                        numeroCuenta = numeroCuentaIn.nextLine(); 
+                        
                         cliente.setRut(rut);
                         cliente.setNombre(nombre);
                         cliente.setApellidoPaterno(apellidoPaterno);
@@ -164,6 +192,7 @@ public class WestBank {
                                                         "\nCOMUNA: " + clienteBanco.get(i).getComuna()+
                                                         "\nNUMERO DE CUENTA: " + clienteBanco.get(i).getCuenta().getNumeroCuenta()+
                                                         "\nSALDO: " + clienteBanco.get(i).getCuenta().getSaldo());
+                                    System.out.println("*********************************************************************\n");
                             break;
                         }
                         else{
