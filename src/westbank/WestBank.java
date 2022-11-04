@@ -39,26 +39,32 @@ public class WestBank {
     }
     
     public static String registrarCliente(){
-        return "";
+        System.out.println("opcion 1");
+        return "1";
     }    
     
     public static String verDatos(){
-        return "";
+        System.out.println("opcion 2");
+        return "2";
     }
     
     public static String deposito(){
-        return "";
+        System.out.println("opcion 3");
+        return "3";
     }
     
     public static String giros(){
-        return "";
+        System.out.println("opcion 4");
+        return "4";
     }
     
     public static String consultaSaldo(){
-        return "";
+        System.out.println("opcion 5");
+        return "5";
     }
      
     public static String salida(){
-        return "";
+        System.out.println("opcion 6");
+        return "6";
     }
 }
