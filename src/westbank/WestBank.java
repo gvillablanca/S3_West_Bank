@@ -91,22 +91,49 @@ public class WestBank {
             if(rut.isEmpty() || nombre.isEmpty() || apellidoPaterno.isEmpty() || apellidoMaterno.isEmpty() || domicilio.isEmpty() || comuna.isEmpty() || telefono.isEmpty()){
                 System.out.println("Favor Ingresar todos los datos\n");
             }
-            else{ 
-                numeroCuenta = rut;
-                
-                cliente.setRut(rut);
-                cliente.setNombre(nombre);
-                cliente.setApellidoPaterno(apellidoPaterno);
-                cliente.setApellidoMaterno(apellidoMaterno);
-                cliente.setDomicilio(domicilio);
-                cliente.setComuna(comuna);
-                cliente.setTelefono(Integer.parseInt(telefono));
-                cliente.setCuenta(cuenta);
-                cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
-                cuenta.setSaldo(saldo);
-                
-                clienteBanco.add(cliente);
-                System.out.println(clienteBanco);
+            else{
+                for(int i = 0;i<=clienteBanco.size();i++){
+                    if(clienteBanco.size()>0){
+                        if(clienteBanco.get(i).getRut().equals(rut)){
+                            System.out.println("Cliente ya se registra en sistema");                            
+                            break;
+                        }
+                        else{
+                            numeroCuenta = rut;                
+                            cliente.setRut(rut);
+                            cliente.setNombre(nombre);
+                            cliente.setApellidoPaterno(apellidoPaterno);
+                            cliente.setApellidoMaterno(apellidoMaterno);
+                            cliente.setDomicilio(domicilio);
+                            cliente.setComuna(comuna);
+                            cliente.setTelefono(Integer.parseInt(telefono));
+                            cliente.setCuenta(cuenta);
+                            cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                            cuenta.setSaldo(saldo);                
+                            clienteBanco.add(cliente);
+                            System.out.println("Cliente registrado exitosamente!");
+                            break;
+                         }                     
+                    }
+                    else{
+                        System.out.println("INGRESE NUMERO DE CUENTA: ");
+                        Scanner numeroCuentaIn = new Scanner(System.in);
+                        numeroCuenta = numeroCuentaIn.nextLine();           
+                        cliente.setRut(rut);
+                        cliente.setNombre(nombre);
+                        cliente.setApellidoPaterno(apellidoPaterno);
+                        cliente.setApellidoMaterno(apellidoMaterno);
+                        cliente.setDomicilio(domicilio);
+                        cliente.setComuna(comuna);
+                        cliente.setTelefono(Integer.parseInt(telefono));
+                        cliente.setCuenta(cuenta);
+                        cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                        cuenta.setSaldo(saldo);                
+                        clienteBanco.add(cliente);
+                        System.out.println("Cliente registrado exitosamente!");
+                        break;
+                    }
+                }                     
             }
         }
         
