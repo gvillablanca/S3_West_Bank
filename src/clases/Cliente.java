@@ -1,5 +1,7 @@
 package clases;
 
+import clases.Cuenta;
+
 public class Cliente {
 String rut;
 String nombre;
@@ -8,7 +10,7 @@ String apellidoMaterno;
 String domicilio;
 String comuna;
 int telefono;
-
+Cuenta cuenta;
 
     public String getRut() {
         return rut;
@@ -66,16 +68,29 @@ int telefono;
         this.telefono = telefono;
     }
 
-    public Cliente(String rut, String nombre, String apellidoPaterno, String apellidoMaterno, String domicilio, String comuna, int telefono) {
-        this.rut = rut;
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.domicilio = domicilio;
-        this.comuna = comuna;
-        this.telefono = telefono;
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(Cuenta cuenta) {
+        this.cuenta = cuenta;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "RUT='" + rut + '\'' +
+                ", NOMBRE='" + nombre + '\'' +
+                ", APELLIDO-PATERNO='" + apellidoPaterno + '\'' +
+                ", APELLIDO-MATERNO='" + apellidoMaterno + '\'' +
+                ", DOMICILIO='" + domicilio + '\'' +
+                ", COMUNA='" + comuna + '\'' +
+                ", TELEFONO='" + telefono + '\'' +
+                ", CUENTA='" + cuenta.numeroCuenta + '\'' +
+                ", SALDO='" + cuenta.saldo + '\'' +
+                '}';
     }
     
-    
-
 }

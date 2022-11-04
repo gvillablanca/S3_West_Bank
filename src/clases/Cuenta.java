@@ -20,10 +20,12 @@ public class Cuenta {
         this.saldo = saldo;
     }
 
-    public Cuenta(int numeroCuenta, int saldo) {
-        this.numeroCuenta = numeroCuenta;
-        this.saldo = saldo;
-    }
-    
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "NUMERO-CUENTA='" + numeroCuenta + '\'' +
+                ", SALDO='" + saldo + '\'' +
+                '}';
+    }    
     
 }
