@@ -208,22 +208,27 @@ public class WestBank {
     }
     
     public static String deposito(List<Cliente> clienteBanco){
-            String rut = new String();
+        String rut = new String();
+        while(rut.isEmpty()){
             System.out.println("RUT: ");
             Scanner rutIn = new Scanner(System.in);
             rut = rutIn.nextLine();
-        
-            String monto = new String();
-            System.out.println("MONTO: ");
-            Scanner saldoIn = new Scanner(System.in);
-            monto = saldoIn.nextLine();
             
+            if(rut.isEmpty()){
+                System.out.println("Debe ingresar un RUT");
+            }
+        }
+        
                 for(int i = 0;i<=clienteBanco.size();i++){
                     if(!clienteBanco.get(i).getRut().equals(rut)){
                         System.out.println("Cliente no se registra en sistema");
                         break;
- }
+                }
                 else{
+                        String monto = new String();
+                        System.out.println("MONTO: ");
+                        Scanner saldoIn = new Scanner(System.in);
+                        monto = saldoIn.nextLine();
                         Cuenta nCuenta = new Cuenta();
                         int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
                         nCuenta.setSaldo(nsaldo);
@@ -231,7 +236,7 @@ public class WestBank {
                         System.out.println("NUEVO SALDO: " + nsaldo);
                         break;
                 }
-            }        
+            }    
         menu(clienteBanco);
         return "3";
     }
