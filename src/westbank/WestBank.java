@@ -6,6 +6,10 @@ import clases.Cuenta;
 public class WestBank {
 
     public static void main(String[] args) {
+        menu();
+    }
+    
+    public static void menu(){
         System.out.println("Bienvenidos, por favor seleccione una opcion para continuar...");
         System.out.println("1- Registrar Cliente\n2- Ver Datos de Cliente \n3- Depositar \n4- Girar \n5- Consultar Saldo \n6- Salir");
         String opcion = new String();
@@ -40,26 +44,31 @@ public class WestBank {
     
     public static String registrarCliente(){
         System.out.println("opcion 1");
+        menu();
         return "1";
     }    
     
     public static String verDatos(){
         System.out.println("opcion 2");
+        menu();
         return "2";
     }
     
     public static String deposito(){
         System.out.println("opcion 3");
+        menu();
         return "3";
     }
     
     public static String giros(){
         System.out.println("opcion 4");
+        menu();
         return "4";
     }
     
     public static String consultaSaldo(){
         System.out.println("opcion 5");
+        menu();
         return "5";
     }
      
