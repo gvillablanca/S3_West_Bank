@@ -229,12 +229,20 @@ public class WestBank {
                         System.out.println("MONTO: ");
                         Scanner saldoIn = new Scanner(System.in);
                         monto = saldoIn.nextLine();
-                        Cuenta nCuenta = new Cuenta();
-                        int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
-                        nCuenta.setSaldo(nsaldo);
-                        clienteBanco.get(i).setCuenta(nCuenta);
-                        System.out.println("NUEVO SALDO: " + nsaldo);
-                        break;
+                        int montoInt = Integer.parseInt(monto);
+                        
+                        if(montoInt==0 || monto.isEmpty()){
+                            System.out.println("Debe ingresar un valor mayor a cero ");
+                            break;
+                        }
+                        else{
+                            Cuenta nCuenta = new Cuenta();
+                            int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
+                            nCuenta.setSaldo(nsaldo);
+                            clienteBanco.get(i).setCuenta(nCuenta);
+                            System.out.println("NUEVO SALDO: " + nsaldo);
+                            break;
+                        }
                 }
             }    
         menu(clienteBanco);
