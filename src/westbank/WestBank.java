@@ -205,7 +205,7 @@ public class WestBank {
         menu(clienteBanco);
     }
     
-    public static String deposito(List<Cliente> clienteBanco){
+    public static void deposito(List<Cliente> clienteBanco){
         String rut = new String();
         while(rut.isEmpty()){
             System.out.println("RUT: ");
@@ -244,19 +244,16 @@ public class WestBank {
                 }
             }    
         menu(clienteBanco);
-        return "3";
     }
     
-    public static String giros(List<Cliente> clienteBanco){
+    public static void giros(List<Cliente> clienteBanco){
         System.out.println("opcion 4");
         menu(clienteBanco);
-        return "4";
     }
     
-    public static String consultaSaldo(List<Cliente> clienteBanco){
+    public static void consultaSaldo(List<Cliente> clienteBanco){
         System.out.println("opcion 5");
         menu(clienteBanco);
-        return "5";
     }
      
     public static void salida(){
