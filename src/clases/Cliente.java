@@ -9,7 +9,7 @@ String apellidoPaterno;
 String apellidoMaterno;
 String domicilio;
 String comuna;
-int telefono;
+String telefono;
 Cuenta cuenta;
 
     public String getRut() {
@@ -60,11 +60,11 @@ Cuenta cuenta;
         this.comuna = comuna;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -13,8 +13,11 @@ public class WestBank {
     }
     
     public static void menu(List<Cliente> clienteBanco){
+        System.out.println("*********************************************************************");
         System.out.println("BIENVENIDO, PARA CONTINUAR SELECCIONE UNA DE LAS SIGUIENTES OPCIONES...\n");
+        System.out.println("*********************************************************************");
         System.out.println("1- REGISTRAR CLIENTE \n2- VER DATOS DE CLIENTES \n3- DEPOSITAR \n4- GIRAR \n5- CONSULTAR SALDO \n6- SALIR");
+        System.out.println("*********************************************************************");
         String opcion = new String();
         while(opcion.isEmpty()){
             System.out.println("OPCION: ");
@@ -22,7 +25,7 @@ public class WestBank {
             opcion = (op.nextLine()).trim();
             
             if(opcion.isEmpty()){
-                System.out.println("FAVOR SELECCIONAR UNA OPCION");
+                System.out.println("FAVOR SELECCIONAR UNA OPCION\n");
             }
             else if(opcion.equals("1")){
                 registrarCliente(clienteBanco);
@@ -60,21 +63,26 @@ public class WestBank {
         int saldo =0;
         
         while(rut.isEmpty() || nombre.isEmpty() || apellidoPaterno.isEmpty() || apellidoMaterno.isEmpty() || domicilio.isEmpty() || comuna.isEmpty() || telefono.isEmpty()){
-            System.out.println("RUT: ");
+            System.out.println("RUT (INGRESE RUT SIN PUNTOS NI GUION) : ");
             Scanner rutIn = new Scanner(System.in);
             rut = rutIn.nextLine();
             
             if(rut.isEmpty()){
                 System.out.println("FAVOR INGRESAR RUT....\n");
             }
+            else if(rut.length() < 8 || rut.length() > 9){
+                System.out.println("FAVOR INGRESAR RUT CORRECTO SIN PUNTOS NI GUIONES....\n");
+            }
             else{
+                rut = checkRut(rut);
                 for(int i = 0;i<=clienteBanco.size();i++){
                     if(clienteBanco.size()>0){
                         if(clienteBanco.get(i).getRut().equals(rut)){
                             System.out.println("CLIENTE YA SE REGISTRA EN SISTEMA....\n");                            
                             break;
                         }
-                        else{                                        
+                        else{
+                            System.out.println("*********************************************************************");
                             System.out.println("NOMBRE: ");
                             Scanner nombreIn = new Scanner(System.in);
                             nombre = nombreIn.nextLine();
@@ -102,23 +110,38 @@ public class WestBank {
                             System.out.println("INGRESE NUMERO DE CUENTA: ");
                             Scanner numeroCuentaIn = new Scanner(System.in);
                             numeroCuenta = numeroCuentaIn.nextLine(); 
-                            
+                            System.out.println("*********************************************************************");
                             cliente.setRut(rut);
-                            cliente.setNombre(nombre);
-                            cliente.setApellidoPaterno(apellidoPaterno);
-                            cliente.setApellidoMaterno(apellidoMaterno);
-                            cliente.setDomicilio(domicilio);
-                            cliente.setComuna(comuna);
-                            cliente.setTelefono(Integer.parseInt(telefono));
+                            cliente.setNombre(nombre.toUpperCase());
+                            cliente.setApellidoPaterno(apellidoPaterno.toUpperCase());
+                            cliente.setApellidoMaterno(apellidoMaterno.toUpperCase());
+                            cliente.setDomicilio(domicilio.toUpperCase());
+                            cliente.setComuna(comuna.toUpperCase());
+                            if(isNumeric(telefono)){
+                                cliente.setTelefono(telefono);
+                            }
+                            else{
+                                System.out.println("INGRESE NUMERO DE TELEFONO VALIDO...\n");
+                                break;
+                            }                            
                             cliente.setCuenta(cuenta);
-                            cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
-                            cuenta.setSaldo(saldo);                
-                            clienteBanco.add(cliente);
-                            System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
-                            break;
+                            while(numeroCuenta.length() < 9){
+                                if(numeroCuenta.length() < 9){
+                                    System.out.println("INGRESE NUMERO DE CUENTA VALIDO...\n");
+                                    break;
+                                }
+                                else{
+                                    cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                                    cuenta.setSaldo(saldo);                
+                                    clienteBanco.add(cliente);
+                                    System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
+                                    break;
+                                }
+                            }
                          }                     
                     }
-                    else{                                    
+                    else{
+                        System.out.println("*********************************************************************");
                         System.out.println("NOMBRE: ");
                         Scanner nombreIn = new Scanner(System.in);
                         nombre = nombreIn.nextLine();
@@ -143,23 +166,37 @@ public class WestBank {
                         Scanner telefonoIn = new Scanner(System.in);
                         telefono = telefonoIn.nextLine();
             
-                        System.out.println("INGRESE NUMERO DE CUENTA: ");
+                        System.out.println("INGRESE NUMERO DE CUENTA (9 DIGITOS): ");
                         Scanner numeroCuentaIn = new Scanner(System.in);
                         numeroCuenta = numeroCuentaIn.nextLine(); 
-                        
+                        System.out.println("*********************************************************************");
                         cliente.setRut(rut);
-                        cliente.setNombre(nombre);
-                        cliente.setApellidoPaterno(apellidoPaterno);
-                        cliente.setApellidoMaterno(apellidoMaterno);
-                        cliente.setDomicilio(domicilio);
-                        cliente.setComuna(comuna);
-                        cliente.setTelefono(Integer.parseInt(telefono));
+                        cliente.setNombre(nombre.toUpperCase());
+                        cliente.setApellidoPaterno(apellidoPaterno.toUpperCase());
+                        cliente.setApellidoMaterno(apellidoMaterno.toUpperCase());
+                        cliente.setDomicilio(domicilio.toUpperCase());
+                        cliente.setComuna(comuna.toUpperCase());
+                        if(isNumeric(telefono)){
+                            cliente.setTelefono(telefono);
+                        }
+                        else{
+                            System.out.println("INGRESE NUMERO DE TELEFONO VALIDO...\n");
+                            break;
+                        } 
                         cliente.setCuenta(cuenta);
-                        cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
-                        cuenta.setSaldo(saldo);                
-                        clienteBanco.add(cliente);
-                        System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
-                        break;
+                        while(numeroCuenta.length() < 9){
+                            if(numeroCuenta.length() < 9){
+                                System.out.println("INGRESE NUMERO DE CUENTA VALIDO...\n");
+                                break;
+                            }
+                            else{
+                                cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                                cuenta.setSaldo(saldo);                
+                                clienteBanco.add(cliente);
+                                System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
+                                break;
+                            }
+                        }
                     }
                 }                     
             }
@@ -170,14 +207,18 @@ public class WestBank {
     public static void verDatos(List<Cliente> clienteBanco){
         String rut = new String();        
         while(rut.isEmpty()){
-            System.out.println("RUT: ");
+            System.out.println("RUT (INGRESE RUT SIN PUNTOS NI GUION) : ");
             Scanner rutIn = new Scanner(System.in);
             rut = rutIn.nextLine();
             
             if(rut.isEmpty()){
                 System.out.println("FAVOR INGRESAR RUT PARA MOSTRAR DATOS...\n");
             }
+            else if(rut.length() < 8 || rut.length() > 9){
+                System.out.println("FAVOR INGRESAR RUT CORRECTO SIN PUNTOS NI GUIONES....\n");
+            }
             else{
+                rut = checkRut(rut);
                 for(int i = 0;i<=clienteBanco.size();i++){
                     if(clienteBanco.size()>0){
                         if(clienteBanco.get(i).getRut().equals(rut)){
@@ -208,56 +249,142 @@ public class WestBank {
     public static void deposito(List<Cliente> clienteBanco){
         String rut = new String();
         while(rut.isEmpty()){
-            System.out.println("RUT: ");
+            System.out.println("RUT (INGRESE RUT SIN PUNTOS NI GUION) : ");
             Scanner rutIn = new Scanner(System.in);
             rut = rutIn.nextLine();
             
             if(rut.isEmpty()){
-                System.out.println("Debe ingresar un RUT");
+                System.out.println("FAVOR INGRESAR RUT PARA MOSTRAR DATOS...\n");
             }
-        }
-        
-                for(int i = 0;i<=clienteBanco.size();i++){
+            else if(rut.length() < 8 || rut.length() > 9){
+                System.out.println("FAVOR INGRESAR RUT CORRECTO SIN PUNTOS NI GUIONES....\n");
+            }
+            else{
+               rut = checkRut(rut);
+               for(int i = 0;i<=clienteBanco.size();i++){
                     if(!clienteBanco.get(i).getRut().equals(rut)){
-                        System.out.println("Cliente no se registra en sistema");
+                        System.out.println("CLIENTE NO SE REGISTRA EN SISTEMA");
                         break;
-                }
-                else{
+                    }
+                    else{
                         String monto = new String();
-                        System.out.println("MONTO: ");
+                        System.out.println("INGRESE MONTO A DEPOSITAR: ");
                         Scanner saldoIn = new Scanner(System.in);
                         monto = saldoIn.nextLine();
-                        int montoInt = Integer.parseInt(monto);
-                        
-                        if(montoInt==0 || monto.isEmpty()){
-                            System.out.println("Debe ingresar un valor mayor a cero ");
-                            break;
+
+                        if(isNumeric(monto)){
+                            int montoInt = Integer.parseInt(monto);                        
+                            if(montoInt==0 || monto.isEmpty()){
+                                System.out.println("INGRESE VALOR MAYOR A CERO");
+                                break;
+                            }
+                            else{
+                                int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
+                                clienteBanco.get(i).getCuenta().setSaldo(nsaldo);
+                                System.out.println("NUEVO SALDO: " + nsaldo);
+                                break;
+                            }
                         }
                         else{
-                            Cuenta nCuenta = new Cuenta();
-                            int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() + Integer.parseInt(monto);
-                            nCuenta.setSaldo(nsaldo);
-                            clienteBanco.get(i).setCuenta(nCuenta);
-                            System.out.println("NUEVO SALDO: " + nsaldo);
                             break;
-                        }
-                }
-            }    
+                        }      
+                    }
+                } 
+            }
+        }          
         menu(clienteBanco);
     }
     
     public static void giros(List<Cliente> clienteBanco){
-        System.out.println("opcion 4");
+        String rut = new String();
+        while(rut.isEmpty()){
+            System.out.println("RUT (INGRESE RUT SIN PUNTOS NI GUION) : ");
+            Scanner rutIn = new Scanner(System.in);
+            rut = rutIn.nextLine();
+            
+            if(rut.isEmpty()){
+                System.out.println("FAVOR INGRESAR RUT PARA MOSTRAR DATOS...\n");
+            }
+            else if(rut.length() < 8 || rut.length() > 9){
+                System.out.println("FAVOR INGRESAR RUT CORRECTO SIN PUNTOS NI GUIONES....\n");
+            }
+            else{
+               rut = checkRut(rut);
+               for(int i = 0;i<=clienteBanco.size();i++){
+                    if(!clienteBanco.get(i).getRut().equals(rut)){
+                        System.out.println("CLIENTE NO SE REGISTRA EN SISTEMA");
+                        break;
+                    }
+                    else{
+                        String monto = new String();
+                        System.out.println("INGRESE MONTO A GIRAR: ");
+                        Scanner saldoIn = new Scanner(System.in);
+                        monto = saldoIn.nextLine();
+
+                        if(isNumeric(monto)){
+                            int montoInt = Integer.parseInt(monto);                        
+                            if(montoInt==0 || monto.isEmpty()){
+                                System.out.println("INGRESE VALOR MAYOR A CERO");
+                                break;
+                            }
+                            else{
+                                int nsaldo = clienteBanco.get(i).getCuenta().getSaldo() - Integer.parseInt(monto);
+                                clienteBanco.get(i).getCuenta().setSaldo(nsaldo);
+                                System.out.println("*********************************************************************");
+                                System.out.println("NUEVO SALDO: " + nsaldo);
+                                System.out.println("*********************************************************************");
+                                break;
+                            }
+                        }
+                        else{
+                            break;
+                        }      
+                    }
+                } 
+            }
+        }          
         menu(clienteBanco);
     }
     
     public static void consultaSaldo(List<Cliente> clienteBanco){
-        System.out.println("opcion 5");
+        String rut = new String();        
+        while(rut.isEmpty()){
+            System.out.println("RUT (INGRESE RUT SIN PUNTOS NI GUION) : ");
+            Scanner rutIn = new Scanner(System.in);
+            rut = rutIn.nextLine();
+            
+            if(rut.isEmpty()){
+                System.out.println("FAVOR INGRESAR RUT PARA MOSTRAR DATOS...\n");
+            }
+            else if(rut.length() < 8 || rut.length() > 9){
+                System.out.println("FAVOR INGRESAR RUT CORRECTO SIN PUNTOS NI GUIONES....\n");
+            }
+            else{
+                rut = checkRut(rut);
+                for(int i = 0;i<=clienteBanco.size();i++){
+                    if(clienteBanco.size()>0){
+                        if(clienteBanco.get(i).getRut().equals(rut)){
+                                    System.out.println("SALDO DISPONIBLE:");
+                                    System.out.println("*********************************************************************");
+                                    System.out.println( "SALDO: " + clienteBanco.get(i).getCuenta().getSaldo());
+                                    System.out.println("*********************************************************************\n");
+                            break;
+                        }
+                        else{
+                            System.out.println("CLIENTE NO SE REGISTRA EN SISTEMA...");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
         menu(clienteBanco);
     }
      
     public static void salida(){
+        System.out.println("*********************************************************************");
         System.out.println("HASTA PRONTO...");
+        System.out.println("*********************************************************************");
     }
     
     public static boolean isNumeric(String cadena){
@@ -266,8 +393,29 @@ public class WestBank {
             return true;
 	} 
         catch (NumberFormatException e){
-            System.out.println("Ingrese valor numerico porfavor...");
+            System.out.println("INGRESE VALOR NUMERICO...");
             return false;
 	}
+    }
+    
+    public static String checkRut(String rut) {
+        int cont=0;
+        String format;
+        if(rut.length() == 0){
+            return "";
+        }else{
+            rut = rut.replace(".", "");
+            rut = rut.replace("-", "");
+            format = "-"+rut.substring(rut.length()-1);
+            for(int i = rut.length()-2;i>=0;i--){
+                format = rut.substring(i, i+1)+format;
+                cont++;
+                if(cont == 3 && i != 0){
+                    format = "."+format;
+                    cont = 0;
+                }
+            }
+            return format;
+        }
     }
 }
