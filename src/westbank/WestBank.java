@@ -265,4 +265,15 @@ public class WestBank {
         System.out.println("HASTA PRONTO...");
         return "6";
     }
+    
+    public static boolean isNumeric(String cadena){
+	try {
+            Integer.parseInt(cadena);
+            return true;
+	} 
+        catch (NumberFormatException e){
+            System.out.println("Ingrese valor numerico porfavor...");
+            return false;
+	}
+    }
 }
