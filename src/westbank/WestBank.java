@@ -117,26 +117,18 @@ public class WestBank {
                             cliente.setApellidoMaterno(apellidoMaterno.toUpperCase());
                             cliente.setDomicilio(domicilio.toUpperCase());
                             cliente.setComuna(comuna.toUpperCase());
-                            if(isNumeric(telefono)){
-                                cliente.setTelefono(telefono);
+                            cliente.setTelefono(telefono);                          
+                            cliente.setCuenta(cuenta);
+                            if(numeroCuenta.length() < 9){
+                                System.out.println("INGRESE NUMERO DE CUENTA VALIDO...\n");
+                                break;
                             }
                             else{
-                                System.out.println("INGRESE NUMERO DE TELEFONO VALIDO...\n");
+                                cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                                cuenta.setSaldo(saldo);                
+                                clienteBanco.add(cliente);
+                                System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
                                 break;
-                            }                            
-                            cliente.setCuenta(cuenta);
-                            while(numeroCuenta.length() < 9){
-                                if(numeroCuenta.length() < 9){
-                                    System.out.println("INGRESE NUMERO DE CUENTA VALIDO...\n");
-                                    break;
-                                }
-                                else{
-                                    cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
-                                    cuenta.setSaldo(saldo);                
-                                    clienteBanco.add(cliente);
-                                    System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
-                                    break;
-                                }
                             }
                          }                     
                     }
@@ -176,27 +168,19 @@ public class WestBank {
                         cliente.setApellidoMaterno(apellidoMaterno.toUpperCase());
                         cliente.setDomicilio(domicilio.toUpperCase());
                         cliente.setComuna(comuna.toUpperCase());
-                        if(isNumeric(telefono)){
-                            cliente.setTelefono(telefono);
+                        cliente.setCuenta(cuenta);
+                        cliente.setTelefono(telefono);
+                        if(numeroCuenta.length() < 9){
+                            System.out.println("INGRESE NUMERO DE CUENTA VALIDO, RECUERDE QUE DEBE SER DE 9 ...\n");
+                            break;
                         }
                         else{
-                            System.out.println("INGRESE NUMERO DE TELEFONO VALIDO...\n");
+                            cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
+                            cuenta.setSaldo(saldo);                
+                            clienteBanco.add(cliente);
+                            System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
                             break;
-                        } 
-                        cliente.setCuenta(cuenta);
-                        while(numeroCuenta.length() < 9){
-                            if(numeroCuenta.length() < 9){
-                                System.out.println("INGRESE NUMERO DE CUENTA VALIDO...\n");
-                                break;
-                            }
-                            else{
-                                cuenta.setNumeroCuenta(Integer.parseInt(numeroCuenta));
-                                cuenta.setSaldo(saldo);                
-                                clienteBanco.add(cliente);
-                                System.out.println("CLIENTE REGISTRADO EXITOSAMENTE!\n");
-                                break;
-                            }
-                        }
+                        }    
                     }
                 }                     
             }
