@@ -45,7 +45,7 @@ public class WestBank {
         }
     }
     
-    public static String registrarCliente(List<Cliente> clienteBanco){
+    public static void registrarCliente(List<Cliente> clienteBanco){
         Cliente cliente = new Cliente();
         Cuenta cuenta = new Cuenta();
         
@@ -165,10 +165,9 @@ public class WestBank {
             }
         }
         menu(clienteBanco);
-        return "1";
     }    
     
-    public static String verDatos(List<Cliente> clienteBanco){
+    public static void verDatos(List<Cliente> clienteBanco){
         String rut = new String();        
         while(rut.isEmpty()){
             System.out.println("RUT: ");
@@ -204,7 +203,6 @@ public class WestBank {
             }
         }
         menu(clienteBanco);
-        return "2";
     }
     
     public static String deposito(List<Cliente> clienteBanco){
@@ -261,9 +259,8 @@ public class WestBank {
         return "5";
     }
      
-    public static String salida(){
+    public static void salida(){
         System.out.println("HASTA PRONTO...");
-        return "6";
     }
     
     public static boolean isNumeric(String cadena){
